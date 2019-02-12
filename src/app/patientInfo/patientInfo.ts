@@ -25,20 +25,11 @@ export class patientInfo implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
 
     ngOnInit() {
-        console.log('ngOnInit');
-
         this.paitaintdetail = new paitaint();
-
-        console.log('ngOnInit');
-
-
-
     }
 
 
     GetInfo() {
-
-        console.log(this.paitaintId);
         const searchurl = 'https://www.ncbi.nlm.nih.gov/pubmed/?term='
         this.api.getpatientinfo(this.paitaintId).subscribe(res => {
             if (res) {
