@@ -1,0 +1,50 @@
+<div>
+    <br>
+    Enter the paitaint number <input [(ngModel)]='paitaintId' type="text" />
+    <button (click)="GetInfo()">Get info</button>
+
+
+</div>
+
+<div>
+    <br>
+    <span class="fixed">Name :</span><span>{{paitaintdetail.name}}</span><br>
+
+    <span class="fixed">Gender :</span><span>{{paitaintdetail.gender}}</span><br>
+
+    <span class="fixed">Date of Birth :</span><span>{{paitaintdetail.dateofbirth}}</span><br>
+
+
+
+</div>
+<br>
+<div *ngIf='showtable' class="center">
+
+    <table mat-table [dataSource]="dataSource" [matSortActive]="name" matSort class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="daterecorded">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> DateRecorded </th>
+            <td mat-cell *matCellDef="let element"> {{element.daterecorded}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="searchtxt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Link to search </th>
+            <td mat-cell *matCellDef="let element">
+                <a [href]='element.searchtxt' target="blank">search</a>
+            </td>
+            <!-- <td mat-cell> {{element.searchtxt}} </td> -->
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
